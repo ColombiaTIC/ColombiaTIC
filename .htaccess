@@ -1,0 +1,39 @@
+# Redirigir a protocolo https
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.colombiatic.com.co/$1 [R,L]
+
+# Habilitando Comprension de archivos
+<FilesMatch "\.(css|js|ico|pdf|jpg|jpeg|gif|php|woff)$">
+SetOutputFilter DEFLATE
+</FilesMatch>
+
+
+# Ocultando las extensiones de archivos
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+
+# Ocultando las extensiones de archivos PHP
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+# Con especificamos cache
+
+ExpiresActive On
+ExpiresDefault "access plus 10 days"
+ExpiresByType text/css "access plus 1 week"
+ExpiresByType text/plain "access plus 1 week"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/x-icon "access plus 3 months"
+ExpiresByType application/x-javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 week"
+ExpiresByType text/javascript "access plus 1 week"
+ExpiresByType application/x-icon "access plus 3 months"
+
+# FIN

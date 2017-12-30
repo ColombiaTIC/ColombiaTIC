@@ -1,0 +1,352 @@
+<!-- <?php
+    $error = "";
+    $enviado = "";
+    if (isset($_POST['enviar'])) {
+        $nombre = $_POST['nombre'];
+        $correo = $_POST['correo'];
+        $mensaje = $_POST['mensaje'];
+
+        if (!empty($nombre)) {
+            $nombre = trim($nombre);
+            $nombre = filter_var($nombre, FILTER_SANITIZE_STRING);
+
+            if (!empty($correo)) {
+            $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
+            if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+                $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Escribe un correo valido.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+            }
+            if (!empty($mensaje)) {
+            $mensaje = htmlspecialchars($mensaje);
+            $mensaje = trim($mensaje);
+            $mensaje = stripslashes($mensaje);
+        }else{
+            $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Escribe un mensaje.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+        }
+        }else{
+            $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Debes escribir un correo electrónico.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+        }
+        }else{
+            $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Debes escribir un nombre.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+        }
+
+
+        if (!$error) {
+            $envair_a = "contacto@colombiatic.com.co";
+            $asunto = "CORREO enviado desde Colombiatic.com.co";
+            $mensaje_preparado = "De: $nombre \n";
+            $mensaje_preparado .= "Correo: $correo \n";
+            $mensaje_preparado .= "Mensaje: " . $mensaje;
+
+            mail($envair_a, $asunto, $mensaje_preparado);
+            $enviado = true;
+        }
+    }
+ ?> -->
+<!--
+  Diseñador - Juan Esteban Restrepo Rojas juanrr@juanencoder.com
+  ColombiaTIC 2017 -2018
+-->
+<!DOCTYPE html>
+<html lang="es" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>ColombiaTIC - Tú dosis personal de aprendizaje</title>
+ <!-- openg -->
+<meta property="og:title" content="ColombiaTIC - Tú dosis personal de Aprendizaje" />
+<meta property="og:site_name" content="ColombiaTIC - Tú dosis personal de Aprendizaje" />
+<meta property="og:description" content="ColombiaTIC es una empresa de emprendimiento digital que busca fortalecer el aprendizaje autónomo, aumentar los indices de producción empresarial, así como el buen uso de las tecnologías de información y comunicación como base fundamental para el desarrollo e innovación tecnológica." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://colombiatic.com.co/" />
+<meta property="og:image" content="https://colombiatic.com.co/imagenes-colombiatic/Imagotipo-colombiatic-microdatos.png" />
+<meta property="og:image:url" content="https://colombiatic.com.co/imagenes-colombiatic/Imagotipo-colombiatic-microdatos.png" />
+<meta property="og:image:alt" content="Isotipo de ColombiaTIC" />
+<meta property="og:image:width" content="922" />
+<meta property="og:image:height" content="519" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ColombiaTIC - Tú dosis personal de Aprendizaje" />
+<meta name="twitter:site" content="@ColombiaTIC2017" />
+<meta name="twitter:description" content="ColombiaTIC es una empresa de emprendimiento digital que busca fortalecer el aprendizaje autónomo, aumentar los indices de producción empresarial, así como el buen uso de las tecnologías de información y comunicación como base fundamental para el desarrollo e innovación tecnológica." />
+<meta name="twitter:url" content="https://colombiatic.com.co/" />
+<meta name="twitter:image" content="https://colombiatic.com.co/imagenes-colombiatic/Imagotipo-colombiatic-microdatos.png" />
+
+<meta name="title" content="Colombiatic - Tú dosis personal de aprendizaje"/>
+<meta name="keywords" content="Emprendimiento, sector tic">
+<meta name="description" content="ColombiaTIC es una empresa de emprendimiento digital que busca fortalecer el aprendizaje autónomo, aumentar los indices de producción empresarial, así como el buen uso de las tecnologías de información y comunicación como base fundamental para el desarrollo e innovación tecnológica.">
+<link rel="shortcut icon" href="imagenes-colombiatic/Icono-colombiatic.ico" type="image/vnd.microsoft.icon"/>
+
+
+<link rel="stylesheet" href="estilos-css-colombiatic/normalize.css">
+<link rel="shortcut icon" type="image/x-icon" href="imagenes-colombiatic/Icono-colombiatic.ico" />
+
+<!-- Google FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Raleway:200,500,700,800,900|VT323" rel="stylesheet">
+
+<!-- ESTILOS Y LIBRERIAS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="estilos-css-colombiatic/main.css?v6">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111264986-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111264986-1');
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="javascript-colombiatic/alertas.min.js"> </script>
+<script src="javascript-colombiatic/main.js?v6"></script>
+</head>
+<body>
+    <span class="ir-arriba"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+    <div class="conten-header">
+      <header class="">
+        <nav role="navigation">
+          <div class="logo">
+              <a href="/"><img src="imagenes-colombiatic/Isotipo-colombiatic.png" alt="Isotipo Colombiatic"></a>
+          </div>
+
+          <input type="checkbox" id="menu-bar">
+          <label for="menu-bar" class="fa fa-bars"></label>
+
+          <div class="enlaces">
+            <ul>
+                <li>
+                    <a href="nosotros/">Nosotros</a>
+                </li>
+                <li>
+                    <a href="servicios/">Servicios</a>
+                </li>
+                <li>
+                    <a href="blog/">Blog Colombiatic</a>
+                </li>
+            </ul>
+            <div class="imagotipo">
+                <img src="imagenes-colombiatic/Imagotipo-colombiatic.png" alt="Imagotipo Colombiatic">
+            </div>
+            <div class="social">
+                <a target="_blank" href="https://fb.me/ColombiaTICED" class="fa fa-facebook-official"></a>
+                <a target="_blank" href="https://goo.gl/nqNkdz" class="fa fa-twitter"></a>
+                <a target="_blank" href="https://plus.google.com/113934994124634049831" class="fa fa-google-plus"></a>
+                <a target="_blank" href="" class="fa fa-youtube-play"></a>
+                <a target="_blank" href="" class="fa fa-linkedin"></a>
+                <a target="_blank" href="" class="fa fa-github-square"></a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+
+      <div class="titulo">
+        <h1>¡Tú dosis personal de aprendizaje!</h1>
+        <span>Un servicio para el Magdalena medio antioqueño</span>
+        <a href="#escribenos">Escribenos</a>
+      </div>
+
+      <div class="aliados">
+         <ul>
+           <li><a target="_blank" href="http://www.dilove.com.co/"><img src="/imagenes-colombiatic/Aliados/Dilove.png" alt="Imagotipo Dilove"></a></li>
+           <li><a target="_blank" href="http://www.inhouselabs.org/"><img src="/imagenes-colombiatic/Aliados/InHouse_Labs.png" alt="Imagotipo InHouse Labs"></a></li>
+           <li><a target="_blank" href="https://www.facebook.com/efra.velandia.3"><img src="/imagenes-colombiatic/Aliados/SalmónCreativo.png" alt="Isologo Salmon Creativo "></a></li>
+         </ul>
+      </div>
+
+    </div>
+
+    <section>
+        <div class="conten-somos">
+            <article>
+                <h2>Somos</h2>
+                <p>emprendedores digitales, que brinda un servicio educacional de calidad con docentes y profesional calificado; poniendo en práctica metodologías de aprendizaje y valores humanos, así como la investigación científica como fuente de conocimiento.</p>
+                <p>Buscamos con el apoyo de la Tecnologías de Información y Comunicación como motor de emprendimiento, formar personas autónomas con mente científica e investigativa.</p>
+            </article>
+        </div>
+        <div class="conten-empresa">
+            <article>
+                <h2>Nuestra misión</h2>
+                <p>Mejorar las organizaciones y centros educativos a través de las Tecnologías de Información y Comunicación, aplicando diferentes técnicas del mercado actual, efectiva estrategias de aprendizaje, gerencia administrativa orientada a la investigación y los diferentes métodos de fortalecimiento a beneficio del cliente.</p>
+            </article>
+        </div>
+        <div class="conten-vision">
+            <article>
+                <h2>Nuestra visión</h2>
+                <p>En el año 2030, una organización dedicada a prestar sus servicios como asesora y mejoradora de ambientes informáticos organizacionales y de aprendizaje, de excelencia en lo relacionado con la aplicabilidad y enseñanza de las TIC, con un eficiente aprovechamiento de las tecnologías de la información y las comunicaciones, en sectores productivos tanto empresariales como educativos.</p>
+            </article>
+        </div>
+        <div class="conten-equipo">
+            <div class="Titulo">
+                <h2>Equipo</h2>
+            </div>
+            <article>
+                <a href="/nosotros/#RobinsonVelandia" class="foto">
+                    <img src="imagenes-colombiatic/Foto-Robinson-Velandiax250.jpg" alt="Foto Robinson Velandia Ruiz">
+                </a>
+                <p>Ingeniero de Sistemas, Analista de requisitos y calidad de software. Especialista en Gerencia de Proyectos. Candidato a Maestría en EVA.</p>
+                <a href="/nosotros/#RobinsonVelandia" class="nombre"><h3>Robinson Velandia Ruíz</h3></a>
+                <span class="rol"><span class="bold">CEO - Co-fundador</span> colombiatic</span>
+                <span class="cargo">Admin. director</span>
+            </article>
+            <article>
+                <a href="/nosotros/#JuanRestrepo" class="foto">
+                    <img src="imagenes-colombiatic/Foto-Juan-RestrepoX250.jpg" alt="Foto Juan Esteban Restrepo Rojas">
+                </a>
+                <p>Autodidacta, entusiasta del diseño digital y amante de las TIC. Diseñador de Web y Especialista en Seguridad y Bases de Datos. Encantado por el CSS, JavaScript y fan del diseño vectorial.</p>
+                <a href="/nosotros/#JuanRestrepo" class="nombre"><h3>Juan Esteban Restrepo Rojas</h3></a>
+                <span class="rol"><span class="bold">CTO & Co-fundador</span> colombiatic</span>
+                <span class="cargo">Art director</span>
+            </article>
+            <article>
+                <a href="/nosotros/#JamesRenteria" class="foto">
+                    <img src="imagenes-colombiatic/Foto-James-MX250-01.jpg" alt="Foto James Mosquera Rentería">
+                </a>
+                <p>Desarrollador de Software. Especialista en Bases de Datos. Amante de la computación y apasionado por su labor.</p>
+                <a href="/nosotros/#JamesRenteria" class="nombre"><h3>James Mosquera Rentería</h3></a>
+                <span class="rol"><span class="bold">Co-fundador</span> colombiatic</span>
+                <span class="cargo">Programmer</span>
+            </article>
+        </div>
+
+        <div class="contacto" id="escribenos">
+              <h2>¿Tienes <span>alguna pregunta</span>?</h2>
+                <article class="contenedor-form">
+
+                  <div class="logo-top">
+                    <span class="logo-top-title">
+                      COLOMBIA
+                      <span class="one">TI</span>
+                      <span class="two">C</span>
+                    </span>
+                  </div>
+
+                  <div class="img">
+                    <div class="logo-bottom">
+                      <span class="logo-bottom-title">
+                        COLOMBIA
+                        <span class="one">TI</span>
+                        <span class="two">C</span>
+                      </span>
+                      <span class="berrio">Puerto Berrío Antioquia</span>
+                    </div>
+                  </div>
+
+                  <div class="title">
+                    <span class="c1">C</span>
+                    <span class="c2">C</span>
+                    <h2 class="left">Contactanos</h2>
+                    <span class="right">Contactanos</span>
+                  </div>
+
+                  <div class="form">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                      <input name="nombre" type="text" maxlength="50" placeholder="Nombre" value="<?php if(!$enviado && isset($nombre)){ echo $nombre; } ?>"/>
+                      <input name="correo" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="50" placeholder="Correo" value="<?php if(!$enviado && isset($correo)){ echo $correo; } ?>"/>
+                      <textarea name="mensaje" pattern="[a-z\s]+$" maxlength="2000" placeholder="Mensaje"><?php if(!$enviado && isset($mensaje)){ echo $mensaje; } ?></textarea>
+                     <?php if (!empty($error)): ?>
+                       <div>
+                         <?php echo $error; ?>
+                       </div>
+                       <?php elseif($enviado): ?>
+                       <div >
+                         <?php
+                         echo "
+                           <script language='JavaScript'>
+                           swal({
+                                 title: 'El mensaje a sido enviado!',
+                                 text: 'Gracias por escribirnos. Responderemos a tu mensaje lo mas pronto posible.',
+                                 icon: 'success',
+                                 button: 'Cerrar',
+                           });
+                           </script>";
+                            ?>
+                       </div>
+                     <?php endif ?>
+                      <input class="botomm" type="submit" name="enviar" value="Enviar"/>
+                    </form>
+                  </div>
+                </article>
+        </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+                <img src="imagenes-colombiatic/Imagotipo-colombiatic.png" alt="">
+        </div>
+
+        <div class="footer-col-navegacion">
+            <h2>Navegación</h2>
+            <a href="/">Inicio</a>
+            <a href="/nosotros/">Nosotros</a>
+            <a href="/servicios/">Servicios</a>
+            <a href="/blog/">Blog</a>
+        </div>
+
+        <div class="footer-col-aliados">
+          <h2>Aliados</h2>
+          <a target="_blank" href="https://www.dilove.com.co/">Dilove</a>
+          <a target="_blank" href="http://www.inhouselabs.org/">in House Labs.</a>
+          <a target="_blank" href="https://goo.gl/PSgo2c">Salmon creativo</a>
+        </div>
+
+        <div class="footer-col-contacto">
+          <address>
+            <h2>Lineas de contacto</h2>
+            <span><i class="fa fa-phone-square"></i>310 4006526</span>
+            <span><i class="fa fa-whatsapp"></i>312 830 8628</span>
+            <span><i class="fa fa-skype"></i>ColombiaTIC</span>
+          </address>
+        </div>
+
+        <div class="footer-col-conectate">
+          <h2>Conéctate</h2>
+          <a target="_blank" href="https://fb.me/ColombiaTICED"><i class="fa fa-facebook-square"></i>Facebook</a>
+          <a target="_blank" href="https://goo.gl/nqNkdz"><i class="fa fa-twitter-square"></i>Twitter</a>
+          <a target="_blank" href="https://plus.google.com/113934994124634049831"><i class="fa fa-google-plus-square"></i>Google plus</a>
+        </div>
+      </div>
+    </footer>
+    <div class="copyright">
+      <div class="copyright-container">
+        <span><i class="fa fa-copyright"></i>2017 - Colombiatic</span>
+        <span><i class="fa fa-envelope-o"></i>comercial@colombiatic.com.co</span>
+      </div>
+    </div>
+</body>
+</html>

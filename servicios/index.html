@@ -1,0 +1,436 @@
+<?php
+    $error = "";
+    $enviado = "";
+    if (isset($_POST['enviar'])) {
+        $nombre = $_POST['nombre'];
+        $correo = $_POST['correo'];
+        $mensaje = $_POST['mensaje'];
+        $numero = $_POST['numero'];
+        $categoria = $_POST['categoria'];
+
+        if (!empty($nombre)) {
+            $nombre = trim($nombre);
+            $nombre = filter_var($nombre, FILTER_SANITIZE_STRING);
+
+            if (!empty($correo)) {
+            $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
+            if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+                $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Escribe un correo valido.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+            }
+            if (!empty($mensaje)) {
+            $mensaje = htmlspecialchars($mensaje);
+            $mensaje = trim($mensaje);
+            $mensaje = stripslashes($mensaje);
+        }else{
+            $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Escribe un mensaje.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+        }
+        }else{
+            $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Debes escribir un correo electrónico.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+        }
+        }else{
+            $error .= "
+                    <script language='JavaScript'>
+                        swal({
+                                  title: 'El mensaje no fue enviado!',
+                                  text: 'Debes escribir un nombre.',
+                                  icon: 'warning',
+                                  button: 'Cerrar',
+                            });
+                    </script>";
+        }
+
+
+        if (!$error) {
+            $envair_a = "comercial@colombiatic.com.co";
+            $asunto = "COTIZACION - Colombiatic.com.co";
+            $mensaje_preparado = "De: $nombre \n";
+            $mensaje_preparado .= "Correo: $correo \n";
+            $mensaje_preparado .= "Nombre: ".$nombre. "Numero: ".$numero. "Categoria: ".$categoria ."Mensaje: ".$mensaje;
+
+            mail($envair_a, $asunto, $mensaje_preparado);
+            $enviado = true;
+        }
+    }
+ ?>
+<!DOCTYPE html>
+<html lang="es" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>ColombiaTIC - Servicios</title>
+<meta name="title" content="Colombiatic - Servicios"/>
+<meta name="keywords" content="Emprendimiento, sector tic">
+
+ <!-- openg -->
+<meta property="og:title" content="Servicios" />
+<meta property="og:site_name" content="ColombiaTIC - Tú dosis personal de Aprendizaje" />
+<meta property="og:url" content="https://colombiatic.com.co/servicios" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ColombiaTIC - Servicios" />
+<meta name="twitter:site" content="@ColombiaTIC2017" />
+<meta name="twitter:url" content="https://colombiatic.com.co/" />
+<meta name="twitter:image" content="https://colombiatic.com.co/imagenes-colombiatic/Imagotipo-colombiatic-microdatos.png" />
+
+<script src="../javascript-colombiatic/modernizr.js"></script>
+<link rel="stylesheet" href="/estilos-css-colombiatic/normalize.css">
+<link rel="shortcut icon" type="image/x-icon" href="/imagenes-colombiatic/Icono-colombiatic.ico" />
+
+<!-- Google FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Raleway:200,500,700,800,900|VT323" rel="stylesheet">
+
+<!-- ESTILOS Y LIBRERIAS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../estilos-css-colombiatic/main.css?v6">
+<link rel="stylesheet" href="../estilos-css-colombiatic/servicios.css?v6">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../javascript-colombiatic/effects.min.js"></script>
+<script src="../javascript-colombiatic/alertas.min.js"> </script>
+<script src="../javascript-colombiatic/main.js?v6"></script>
+</head>
+<body>
+    <span class="ir-arriba"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+    <header>
+        <nav role="navigation">
+            <div class="logo">
+                <a href="/"><img src="../imagenes-colombiatic/Isotipo-colombiatic.png" alt=""></a>
+            </div>
+
+            <input type="checkbox" id="menu-bar">
+            <label for="menu-bar" class="fa fa-bars"></label>
+
+            <div class="enlaces">
+                <ul>
+                    <li>
+                        <a href="/nosotros/">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href="/servicios/">Servicios</a>
+                    </li>
+                    <li>
+                        <a href="/blog/">Blog Colombiatic</a>
+                    </li>
+                </ul>
+                <div class="imagotipo">
+                    <img src="/imagenes-colombiatic/Imagotipo-colombiatic.png" alt="Imagotipo Colombiatic">
+                </div>
+                <div class="social">
+                    <a href="https://fb.me/ColombiaTICED" class="fa fa-facebook-official"></a>
+                    <a href="https://goo.gl/nqNkdz" class="fa fa-twitter"></a>
+                    <a href="https://plus.google.com/113934994124634049831" class="fa fa-google-plus"></a>
+                    <a href="#" class="fa fa-youtube-play"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-github-square"></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido-servicios">
+        <div class="title-services">
+            <div class="contenedor">
+                <h1>¿Que hacemos?</h1>
+                <p>Nuestros servicios están orientados a la rápida identificación de oportunidades de mejora, la definición de planes de acción, así como su ejecución eficaz y a la entera satisfacción del cliente.</p>
+                <div class="enlaces">
+                    <a href="#cotizar" class="enviar-info">Solicitar cotización</a>
+                    <a href="/nosotros">¡Conócenos!</a>
+                </div>
+            </div>
+        </div>
+        <article>
+            <div class="article-container">
+                <div class="conten-title">
+                    <h2>Asesorías empresariales</h2>
+                    <p>Aplicamos diferentes técnicas informáticas con el fin de ver cambios significativos en la productividad y administración de una empresa, organización o persona natural.</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-building" aria-hidden="true"></i></span>
+                    <h3>MERCADEO</h3>
+                    <p>Estudios de mercado y financiero</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-bar-chart" aria-hidden="true"></i></span>
+                    <h3>ANALISIS</h3>
+                    <p>Tabulación gráfica y análisis de resultados</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-briefcase" aria-hidden="true"></i></span>
+                    <h3>NEGOCIOS</h3>
+                    <p>Elaboración de plan de negocios</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-align-right" aria-hidden="true"></i></span>
+                    <h3>PONENCIAS</h3>
+                    <p>Conferencias, seminarios y diplomados</p>
+                </div>
+            </div>
+        </article>
+        <article>
+            <div class="article-container">
+                <div class="conten-title">
+                    <h2>Administración y Análisis</h2>
+                    <p>Aplicando técnicas de gestión e investigación, buscamos mejorar administrativamente su empresa con el objetivo de mejorar los índices de desarrollo a nivel productivo.</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-line-chart" aria-hidden="true"></i></span>
+                    <h3>ADMINISTRACION</h3>
+                    <p>Gestión de proyectos</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-hand-paper-o" aria-hidden="true"></i></span>
+                    <h3>ELECCION PUNTUAL</h3>
+                    <p>Toma de decisiones</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-laptop" aria-hidden="true"></i></span>
+                    <h3>TRANSFERENCIA DE CONOCIMIENTO</h3>
+                    <p>Auditorías informáticas</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
+                    <h3>CONSTRUCCION</h3>
+                    <p>Asesorías de ideas de negocio</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-cogs" aria-hidden="true"></i></span>
+                    <h3>DINAMISMO</h3>
+                    <p>Automatización de proyectos</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-window-restore" aria-hidden="true"></i></span>
+                    <h3>SOPORTE</h3>
+                    <p>Servicio al cliente</p>
+                </div>
+            </div>
+        </article>
+        <article>
+            <div class="article-container">
+                <div class="conten-title">
+                    <h2>Computo y medios digitales</h2>
+                    <p>Buscamos con el apoyo de las tecnologías de información y comunicación, optimizar la productividad y el funcionamiento de su empresa, así como mejorar estratégicamente su perfil digital aplicando las nuevas tendencias tecnológicas.</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-code" aria-hidden="true"></i></span>
+                    <h3>PROGRAMACION</h3>
+                    <p>Diseño y desarrollo web</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-object-ungroup" aria-hidden="true"></i></span>
+                    <h3>IMAGEN</h3>
+                    <p>Diseño publicitario</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-pause-circle" aria-hidden="true"></i></span>
+                    <h3>VIDEOCLIP</h3>
+                    <p>Edición multimedia</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-weixin" aria-hidden="true"></i></span>
+                    <h3>MEDIOS DIGITALES</h3>
+                    <p>Asesoría en herramientas TIC</p>
+                </div>
+                <div class="servicios servicios">
+                    <span><i class="fa fa-star" aria-hidden="true"></i></span>
+                    <h3>ESTRATEGIAS</h3>
+                    <p>Marketing y SEO</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-random" aria-hidden="true"></i></span>
+                    <h3>PROGRAMAS</h3>
+                    <p>Instalación de Software</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-windows" aria-hidden="true"></i></span>
+                    <h3>COMPUTO</h3>
+                    <p>Clases y fundamentación OS</p>
+                </div>
+            </div>
+        </article>
+        <article>
+            <div class="article-container">
+                <div class="conten-title">
+                    <h2>Seminarios y diplomados</h2>
+                    <p>Teniendo en cuenta las buenas practicas pedagógicas, tecnológicas y empresariales, buscamos formas personas autónomas con capacidades de adaptación tecnológica y con mente emprendedora.</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-line-chart" aria-hidden="true"></i></span>
+                    <h3>ADMINISTRACION</h3>
+                    <p>Gestión de proyectos</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-sort-alpha-asc" aria-hidden="true"></i></span>
+                    <h3>INNOVACION</h3>
+                    <p>Emprendimiento y empresarismo</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-puzzle-piece" aria-hidden="true"></i></span>
+                    <h3>TEORIA</h3>
+                    <p>Metodología de la investigación</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-laptop" aria-hidden="true"></i></span>
+                    <h3>MEDIOS DIGITALES</h3>
+                    <p>Tecnologías de información y comunicaciones</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></span>
+                    <h3>TECNOLOGIA</h3>
+                    <p>Pedagogía digital</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-object-ungroup" aria-hidden="true"></i></span>
+                    <h3>CREATIVIDAD</h3>
+                    <p>Diseño Gráfico</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-code" aria-hidden="true"></i></span>
+                    <h3>PROGRAMACION</h3>
+                    <p>Diseño y desarrollo web</p>
+                </div>
+                <div class="servicios">
+                    <span><i class="fa fa-database" aria-hidden="true"></i></span>
+                    <h3>DATA CENTER</h3>
+                    <p>Bases de Datos</p>
+                </div>
+            </div>
+        </article>
+        <article class="cotizar" id="cotizar">
+            <div class="content-cotizar">
+                <div class="imagen">
+                    <img src="/imagenes-colombiatic/Imagotipo-colombiatic.png" title="Imagotipo ColombiaTIC" alt="Imagotipo ColombiaTIC">
+                </div>
+                <div class="ud_tab">
+
+                    <input type="radio" name="ud_tabs" id="tab1" checked >
+                    <label for="tab1">Formulario</label>
+
+                    <input type="radio" name="ud_tabs" id="tab2">
+                    <label for="tab2">Hablemos por Messenger</label>
+
+                    <div id="ud_tab-content1" class="ud_content">
+                            <h2>Solicitar cotización</h2>
+                            <p>Si deseas cotizar uno o varios de nuestros servicios, diligencia el siguiente formulario.</p>
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                              <input name="nombre" type="text" maxlength="50" placeholder="Nombre" value="<?php if(!$enviado && isset($nombre)){ echo $nombre; } ?>"/>
+                              <input name="correo" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="50" placeholder="Correo" value="<?php if(!$enviado && isset($correo)){ echo $correo; } ?>"/>
+                              <input name="numero" type="number" placeholder="Telefono/c" value="<?php if(!$enviado && isset($numero)){ echo $numero; } ?>"/>
+                                <div class="categoria">
+                                <label for="cate">De que trata su negocio/empresa</label>
+                                  <select name="categoria" id="cate">
+                                      <option value="" disabled selected hidden>Seleccione...</option>
+                                      <option value="Informativo">Informativo</option>
+                                      <option value="Escuela">Escuela</option>
+                                      <option value="Servicios&P">Servicios & Productos</option>
+                                      <option value="Tecnologia">Tecnología</option>
+                                      <option value="LocalC">Local Comercial</option>
+                                      <option value="ProyectoP">Proyecto Personal</option>
+                                      <option value="Estudio">Estudio</option>
+                                      <option value="Otro">Otro</option>
+                                  </select>
+                              </div>
+
+                              <textarea name="mensaje" maxlength="2000" placeholder="Especificanos a detalle lo que necesitas"><?php if(!$enviado && isset($mensaje)){ echo $mensaje; } ?>
+                              </textarea>
+                             <?php if (!empty($error)): ?>
+                               <div class="alert error">
+                                 <?php echo $error; ?>
+                               </div>
+                               <?php elseif($enviado): ?>
+                               <div class="alert enviado">
+                                 <?php
+                                 echo "
+                                   <script language='JavaScript'>
+                                   swal({
+                                         title: 'El mensaje a sido enviado!',
+                                         text: 'Gracias por escribirnos. Responderemos a tu mensaje lo mas pronto posible.',
+                                         icon: 'success',
+                                         button: 'Cerrar',
+                                   });
+                                   </script>";
+                                    ?>
+                               </div>
+                             <?php endif ?>
+                              <input class="botomm" type="submit" name="enviar" value="Enviar"/>
+                            </form>
+                    </div>
+
+                    <div id="ud_tab-content2" class="ud_content">
+                        <h2>Escribir por Messenger</h2>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FColombiaTICED%2F&tabs=messages&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+                <img src="/imagenes-colombiatic/Imagotipo-colombiatic.png" alt="">
+        </div>
+
+        <div class="footer-col-navegacion">
+            <h2>Navegación</h2>
+            <a href="/">Inicio</a>
+            <a href="/nosotros/">Nosotros</a>
+            <a href="/servicios/">Servicios</a>
+            <a href="/blog/">Blog</a>
+        </div>
+
+        <div class="footer-col-aliados">
+          <h2>Aliados</h2>
+          <a target="_blank" href="https://www.dilove.com.co/">Dilove</a>
+          <a target="_blank" href="http://www.inhouselabs.org/">in House Labs.</a>
+          <a target="_blank" href="https://goo.gl/PSgo2c">Salmon creativo</a>
+        </div>
+
+        <div class="footer-col-contacto">
+          <address>
+            <h2>Lineas de contacto</h2>
+            <span><i class="fa fa-phone-square"></i>310 4006526</span>
+            <span><i class="fa fa-whatsapp"></i>312 830 8628</span>
+            <span><i class="fa fa-skype"></i>ColombiaTIC</span>
+          </address>
+        </div>
+
+        <div class="footer-col-conectate">
+          <h2>Conéctate</h2>
+          <a target="_blank" href="https://fb.me/ColombiaTICED"><i class="fa fa-facebook-square"></i>Facebook</a>
+          <a target="_blank" href="https://goo.gl/nqNkdz"><i class="fa fa-twitter-square"></i>Twitter</a>
+          <a target="_blank" href="https://plus.google.com/113934994124634049831"><i class="fa fa-google-plus-square"></i>Google plus</a>
+        </div>
+      </div>
+    </footer>
+    <div class="copyright">
+      <div class="copyright-container">
+        <span><i class="fa fa-copyright"></i>2017 - Colombiatic</span>
+        <span><i class="fa fa-envelope-o"></i>comercial@colombiatic.com.co</span>
+      </div>
+    </div>
+</body>
+</html>
