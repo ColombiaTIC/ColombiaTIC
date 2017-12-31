@@ -4,7 +4,7 @@
     font-family: 'Raleway', sans-serif;
 */
 
-*, *:before, *:after {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     border: 0;
@@ -45,7 +45,7 @@ html {
 .ir-arriba:hover i {
     transform: scale(1.2);
 }
-.ir-arriba:before {
+.ir-arriba::before {
     content: "";
     position: absolute;
     width: 0;
@@ -56,7 +56,7 @@ html {
     z-index: 2;
     opacity: 0;
 }
-.ir-arriba:hover:before {
+.ir-arriba:hover::before {
     width: 120%;
     height: 120%;
     opacity: .4;
@@ -356,7 +356,7 @@ section .conten-equipo {
     transform: scale(1.1);
     background-color: rgba(255, 255, 255, 1);
 }
-.conten-equipo article:before {
+.conten-equipo article::before {
     content: "";
     position: absolute;
     bottom: 0px;
@@ -367,7 +367,7 @@ section .conten-equipo {
     transition: all .5s ease;
     border-radius: 10px;
 }
-.conten-equipo article:after {
+.conten-equipo article::after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -378,10 +378,10 @@ section .conten-equipo {
     transition: all .5s ease;
     border-radius: 10px;
 }
-.conten-equipo article:hover:before {
+.conten-equipo article:hover::before {
     right: -25px;
 }
-.conten-equipo article:hover:after {
+.conten-equipo article:hover::after {
     bottom: -25px;
 }
 .conten-equipo .foto {
@@ -439,7 +439,7 @@ CONTACTO */
     align-content: center;
     align-items: center;
 
-    background: linear-gradient(to bottom right, rgba(0, 30, 217, .90), rgba(0, 31, 239, .90), rgba(62, 36, 237, .90)), url(../imagenes-colombiatic/Computo.jpg);
+    background: linear-gradient(to bottom right, rgba(56, 84, 225, .90), rgba(0, 31, 239, .90), rgba(35, 2, 255, .90)), url(../imagenes-colombiatic/Computo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
