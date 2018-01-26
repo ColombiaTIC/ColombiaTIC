@@ -300,7 +300,7 @@ section .conten-services {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 section .conten-services article{
     padding: 0;
@@ -313,10 +313,11 @@ section .conten-services article{
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 .s-svg{
-    width: 100%;max-width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin: 10px;
     text-align: center;
 }
@@ -338,24 +339,27 @@ section .conten-services article{
 .s-svg p{
     font-size: 16px;
 }
-section .conten-empresa article{
+section .conten-somos article{
     top: 50px;
+
 }
-section .conten-empresa {
+section .conten-somos {
     background-image: url(../imagenes-colombiatic/Empresa.png);
     min-height: 100vh;
 }
-section .conten-empresa article h2, .conten-empresa p {
+section .conten-somos article h2, .conten-somos p {
     text-align: right;
 }
-section .conten-vision {
+.conten-somos p{
+}
+section .conten-formacion {
     background-image: url(../imagenes-colombiatic/Vision.png);
     min-height: 100vh;
 }
-section .conten-vision article{
+section .conten-formacion article{
     top: 0;
 }
-section .conten-vision article h2, .conten-vision p {
+section .conten-formacion article h2, .conten-formacion p {
     text-align: center;
 }
 section .conten-equipo {
@@ -472,14 +476,13 @@ CONTACTO */
 .contacto {
     width: 100%;
     min-height: 100vh;
-    padding: 40px 10px;
 
     display: flex;
     flex-flow: row wrap;
     align-content: center;
     align-items: center;
 
-    background: linear-gradient(to bottom right, rgba(56, 84, 225, .90), rgba(0, 31, 239, .90), rgba(35, 2, 255, .90)), url(../imagenes-colombiatic/Computo.jpg);
+    background: #fafafa url(../imagenes-colombiatic/Contacto.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -495,13 +498,10 @@ CONTACTO */
     width: 100%;
     text-align: center;
     margin-bottom: 40px;
-    color: #fff;
-    font-weight: 500;
+    color: #303841;
+    font-weight: 700;
     font-size: 60px;
     font-family: 'Inconsolata', monospace;
-}
-.contacto > h2 span {
-    font-weight: 700;
 }
 .contacto article {
     font-family: 'Raleway', sans-serif;
@@ -513,6 +513,7 @@ CONTACTO */
     border-radius: 10px;
     padding: 0;
     overflow: hidden;
+    box-shadow: 0px 0px 18px -10px rgba(158,158,158,1);
 }
 .logo-top {
     position: relative;
@@ -797,10 +798,10 @@ footer {
         font-size: 20px;
         margin-bottom: 0px;
     }
-    .conten-empresa article {
+    .conten-somos article {
         top: 70px;
     }
-    .conten-vision article {
+    .conten-formacion article {
         top: 50px;
     }
     .conten-equipo article {
@@ -909,10 +910,13 @@ footer {
     .s-svg-col{
         margin: 20px;
     }
-    section .conten-empresa article {
-        top: 120px;
+    .s-svg{
+        margin: 0px 30px 10px 30px;
     }
-    section .conten-vision article {
+    section .conten-somos article {
+        top: 100px;
+    }
+    section .conten-formacion article {
         top: 80px;
     }
     .copyright {
@@ -942,10 +946,13 @@ footer {
     .conten-header .titulo span {
         font-size: 25px;
     }
-    section .conten-empresa article {
-        top: 120px;
+    section .conten-services {
+        padding: 80px;
     }
-    section .conten-vision article{
+    section .conten-somos article {
+        top: 100px;
+    }
+    section .conten-formacion article{
         top: 60px;
     }
     section .conten-services article h2,
@@ -953,7 +960,7 @@ footer {
     .contacto > h2{
         font-size: 70px;
     }
-    .conten-empresa p, .conten-vision p {
+    .conten-somos p, .conten-formacion p {
         font-size: 25px;
         line-height: 30px;
 
